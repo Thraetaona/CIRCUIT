@@ -1,3 +1,4 @@
+<div align="center">
 
   <h1><code>CIRCUIT</code></h1>
 
