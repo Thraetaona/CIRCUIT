@@ -32,6 +32,11 @@
 ### Nomenclature
 CIRCUIT is an acronym for "**Circu**lar **I**terative **T**able". \
 
+```
+C1: DEC, NOP, INC, NXT
+C2: EXT, DEC
+```
+
 <figure align="center" text-align="center">
 
   <br />
@@ -43,7 +48,7 @@ CIRCUIT is an acronym for "**Circu**lar **I**terative **T**able". \
   />
   <figcaption>
   <sub>
-    Notice how X (The first register on top) is the starting active register, and that each instruction causes the current active register to switch to the proceeding register (Cycling through X, Y and Z every three instructions).  Another thing to take note of is that the middle NXT instruction in the second row of the image does not result in the interpreter moving on to the next subroutine (C2), and instead it stays on the current one (C1) and resumes execution from C1's first instruction again, this is because NXT only jumps to the next subroutine if the value of the active register equals 0, and in our case it's 1 (Not 0) during the first occurrence of NXT; this also holds true for EXT having to execute twice in C2.
+    Notice how X (The first register on top) always starts off as the active register, and that each instruction causes the the proceeding register to be the next active register (Therefore cycling through X, Y and Z every three instructions).  Another thing to take note of is that the middle NXT instruction in the second row of the image does not result in the interpreter moving on to the next subroutine (C2), and instead it stays on the current one (C1) and resumes execution from C1's first instruction again, this is because NXT only jumps to the next subroutine if the value of the active register equals 0, and in our case it's 1 (Not 0) during the first occurrence of NXT; this also holds true for EXT having to execute twice in C2.
   </sub>
   </figcaption>
   
