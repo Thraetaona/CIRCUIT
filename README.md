@@ -32,7 +32,7 @@
 ### Nomenclature
 CIRCUIT is an acronym for "**Circu**lar **I**terative **T**able". \
 
-```
+```Assembly
 C1: DEC, NOP, INC, NXT
 C2: EXT, DEC
 ```
@@ -55,5 +55,27 @@ C2: EXT, DEC
   <br />
   
 </figure>
+
+
+***
+
+## Features
+
+
+| Opcode | Instruction Mnemonic | Description |
+| :---: | :---: | :--- |
+| 0000 | NOP | No operation; does nothing. (Could be used to safely select the proceeding register as the active register without any other side effects.) |
+| 0001 | EXT | the value of the active register equals 0 then this exits the program entirely without loading any other subtask. |
+| 0010 | NXT | Next; if the value of the active register equals 0 then it ends the current C(n) subtask and switches to the first line of the next C(n+1) subtask; otherwise nothing happens and this behaves the same as "NOP". |
+| 0011 | PRV | Previous; Similar to "NXT", except that if the value of the active register equals 0 this will end the current C(n) subtask and switch to the previous C(n-1) subtask; otherwise nothing happens and this behaves the same as "NOP". |
+| 0100 | INC | Increment; increaes the value of the active register by 1. |
+| 0101 | DEC | Decrement; decreases the value of the active register by 1. |
+| 0110+ | [Reserved] | Currently acts as a "NOP". |
+
+
+
+
+
+
 
 [test](https://archive.org/31/items/2nd_written_29th_inoi/problems.pdf#page=3)
