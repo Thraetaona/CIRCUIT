@@ -65,7 +65,7 @@ C2: EXT, DEC
 | Opcode | Instruction Mnemonic | Description |
 | :---: | :---: | :--- |
 | 0000 | NOP | No operation; does nothing. (Could be used to safely select the proceeding register as the active register without any other side effects.) |
-| 0001 | EXT | the value of the active register equals 0 then this exits the program entirely without loading any other subtask. |
+| 0001 | EXT | Exit; if the value of the active register equals 0 then this exits the program entirely without loading any other subtask. |
 | 0010 | NXT | Next; if the value of the active register equals 0 then it ends the current C(n) subtask and switches to the first line of the next C(n+1) subtask; otherwise nothing happens and this behaves the same as "NOP". |
 | 0011 | PRV | Previous; Similar to "NXT", except that if the value of the active register equals 0 this will end the current C(n) subtask and switch to the previous C(n-1) subtask; otherwise nothing happens and this behaves the same as "NOP". |
 | 0100 | INC | Increment; increaes the value of the active register by 1. |
