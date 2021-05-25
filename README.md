@@ -31,7 +31,8 @@
 ## Abstract
 ### Introduction
 CIRCUIT is an interpreted programming language with 3 general-purpose registers and 6 instructions.  \
-But one of it's main traits that makes it unique and novel is that **all** of it's instructions are nullary, meaning that none of them take any argument.  While the usability of such a design may sound very limited at first, it's actually possible to implement a lot of common CISC machine instructions (Such as greatest common divisor (GCD), square of a number, multiplication of 2 numbers, maximum and minimum, etc) despite the small number of it's default built-in registers and (nullary) instructions.
+But one of it's main traits that makes it unique and novel is that **all** of it's instructions are nullary, meaning that none of them take any argument.  While the usability of such a design may sound very limited at first, it's actually possible to implement a lot of common CISC machine instructions (Such as greatest common divisor (GCD), square of a number, multiplication of 2 numbers, maximum and minimum, etc) despite the small number of it's default built-in registers and (nullary) instructions. \ 
+CIRCUIT also
 
 ###
 
@@ -47,7 +48,7 @@ As demonstrated in the Above image, the register's structure looks similar to a 
     title="The general structure of CIRCUIT"
   />
   <figcaption> <sub>
-    CIRCUIT has 3 general-purpose registers named X, Y and Z; it also uses the concept of "Active Register", which means that instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 1 or INC X for example), it instead uses an Active Register Counter ("ARC") that points to one of the 3 registers at any given time; each time an instruction is executed, ARC increases by 1 (from 1 up to a maximum of 3, if it's already 3 then it simply folds back to 1, therefore cycling through X, Y and Z every 3 instructions); to further clarify,
+    CIRCUIT has 3 general-purpose registers named X, Y and Z; it also uses the concept of "Active Register", which means that instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 1 or INC X for example), it instead uses an Active Register Counter ("ARC") with 3 states (1, 2 or 3) that always points to X at start and each time an instruction is executed, ARC increases by 1 (from 1 up to a maximum of 3, if it's already 3 then it simply folds back to 1, therefore cycling through X, Y and Z every 3 instructions).
   </sub> </figcaption>
 <br /> </p>
 
@@ -92,8 +93,8 @@ When the interpreter reaches the end of a subroutine
 | :---: | :---: | :--- |
 | 0000 | NOP | No operation; does nothing. (Could be used to safely select the proceeding register as the active register without any other side effects.) |
 | 0001 | EXT | Exit; if the value of the active register equals 0, then this exits the program entirely without loading any other subtask; otherwise nothing happens and this behaves the same as "NOP". |
-| 0010 | NXT | Next; if the value of the active register equals 0, then this ends the current C<sub>n</sub> subtask and switches to the first line of the next C<sub>(n+1)</sub> subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>*</sup> |
-| 0011 | PRV | Previous; if the value of the active register equals 0, then this ends the current C<sub>n</sub> subtask and switch to the previous C<sub>(n-1)</sub> subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>*</sup> |
+| 0010 | NXT | Next; if the value of the active register equals 0, then this ends the current C<sub>n</sub> subtask and switches to the first line of the next C<sub>(n+1)</sub> subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>[*]</sup> |
+| 0011 | PRV | Previous; if the value of the active register equals 0, then this ends the current C<sub>n</sub> subtask and switch to the previous C<sub>(n-1)</sub> subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>[*]</sup> |
 | 0100 | INC | Increment; increaes the value of the active register by 1. |
 | 0101 | DEC | Decrement; decreases the value of the active register by 1. |
 | 0110+ | [Reserved] | Currently acts as a "NOP". |
