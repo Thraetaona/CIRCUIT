@@ -99,10 +99,12 @@ A subroutine keeps looping back unless it has an EXT, NXT or
 | 0110+ | [Reserved] | Currently acts as a "NOP". |
 <sub>
 *: There are 3 special cases:
-1) The first subroutine (C<sub>1</sub>) having a PRV instruction.
-2) The last subroutine (C<sub>n</sub>) having a NXT instruction.
-3) There is only a single subroutine having a PRV or NXT.
+  
+1) The first subroutine (C<sub>1</sub>) having a PRV instruction. \
+2) The last subroutine (C<sub>n</sub>) having a NXT instruction. \
+3) There is only a single subroutine having a PRV or NXT. \
 In the first two cases a fold happens; in the first case the execution resumes at C<sub>n</sub> (The last subroutine), and in the second case at C<sub>1</sub> (the first subroutine).
+  
 The third case is exactly the same as the other cases, but because the first and last subroutine are the same (As there is only a single subroutine), it just keeps looping back to itself. (Unless there is an EXT and the required conditions are met)
 
 
