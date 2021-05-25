@@ -40,7 +40,7 @@ But one of it's main traits that makes it unique and novel is that **all** of it
 CIRCUIT is an acronym for "**Circu**lar **I**terative **T**able". \
 As demonstrated in the Above image, the register's structure looks similar to a circular table with 3 seats around it, and each register is accessed once every 3 cycles, in other words we *iterate* through the registers on the *table* (Index) in a *circular* manner.
 
-<figure align="center" text-align="center"> 
+<p align="center" text-align="center"> 
   <br />
   <img 
     src="./overview.svg?raw=true&sanitize=true" 
@@ -53,15 +53,15 @@ As demonstrated in the Above image, the register's structure looks similar to a 
   </sub> 
   </figcaption>
 <br /> 
-</figure>
+</p>
 
 ***
 
 ## Guide
 ### Syntax
 CIRCUIT's syntax is similar to Assembly save for the lack of operands and arguments, another key point of CIRCUIT is the important role of subroutines, subroutines are more of a necessity and much more verastile, and certain tasks impossible to accomplish without using them.
-The following program consisting of 3 subroutines that is used to find the maximum of 2 numbers covers the majority of what you need to know to get started: \
-<sub>(This example is also available in the ./examples folder as "max.cit" with more details and a cleaner syntax.)</sub>
+The following program consisting of 3 subroutines that is used to find the maximum between 2 numbers covers the majority of what you need to know regarding the syntax to get started: \
+<sub>(This example is also available in the ./examples folder as "max.cit" with more details and consistency.)</sub>
 
 ```Assembly
 ; Lines starting with semicolons (";") are comment lines ignored by the interpreter.
@@ -113,8 +113,8 @@ The third case is exactly the same as the other cases, but because the first and
 </sub>
 
 ```Assembly
-C1: DEC, NOP, INC, NXT
-C2: EXT, DEC
+C1: DEC NOP INC NXT
+C2: EXT DEC
 ```
 
 <figure align="center" text-align="center"> <br />
