@@ -75,12 +75,38 @@ C3: NOP EXT
 NOP
   NOP  DEC    INC
 ```
-All 3 subroutines are valid, you could either write the instructions in a sequence separated by one or more whitespaces (" ") like in C1, below eachother like in C2, or as a combination of both as seen in C3. \
-The subroutines C<sub>n</sub> are defined just like labels in Assembly.  Also the order in which they are defined **does** matter, for example C2 could **not** be defined before C1, likewise you could **not** define C1 and jump to C3 and C4 while skipping C2.
+All 3 subroutines are valid, you could either write the instructions in a sequence separated by one or more whitespaces (" ") like in C<sub>1</sub>, below eachother like in C<sub>2</sub>, or as a combination of both as seen in C<sub>3</sub>. \
+The subroutines C<sub>n</sub> are defined just like labels in Assembly.  Also the order in which they are defined **does** matter, for example C<sub>2</sub> could **not** be defined before C<sub>1</sub>, likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.
 
-You can have just one subroutine or up to (TODO: max number) subroutines.  C1 is always the first subroutine to get executed. \
-Switching between subroutines is possible by using the NXT and PRV instructions, these could appear in the middle of a subroutine and if the required conditions (Explained in the instructions map) are met then the switch to the next C<sub>(n+1)</sub> subroutine happens
+You can have one or more (or up to a maximum of (TODO: max number)) subroutines.  C<sub>1</sub> is always the first subroutine to get executed. \
 
+Switching between subroutines is possible by using the NXT and PRV instructions, these could appear in the middle of a subroutine and if the required conditions (Explained in the instructions map) are met then the switch to the next C<sub>(n+1)</sub> subroutine happens, even if the following instructions have not been executed yet. \
+There are 3 special cases that are discussed in the Instruction Set section.
+
+A subroutine keeps looping back unless it has an EXT, NXT or
+
+### Instruction Set
+
+
+| Internal Opcode | Instruction Mnemonic | Description |
+| :---: | :---: | :--- |
+| 0000 | NOP | No operation; does nothing. (Could be used to safely select the proceeding register as the active register without any other side effects.) |
+| 0001 | EXT | Exit; if the value of the active register equals 0 then this exits the program entirely without loading any other subtask; otherwise nothing happens and this behaves the same as "NOP". |
+| 0010 | NXT | Next; if the value of the active register equals 0 then it ends the current C(n) subtask and switches to the first line of the next C(n+1) subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>*</sup> |
+| 0011 | PRV | Previous; if the value of the active register equals 0 this will end the current C(n) subtask and switch to the previous C(n-1) subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>*</sup> |
+| 0100 | INC | Increment; increaes the value of the active register by 1. |
+| 0101 | DEC | Decrement; decreases the value of the active register by 1. |
+| 0110+ | [Reserved] | Currently acts as a "NOP". |
+<sub>
+*: There are 3 special cases:
+1) The first subroutine (C<sub>1</sub>) having a PRV instruction.
+2) The last subroutine (C<sub>n</sub>) having a NXT instruction.
+3) There is only a single subroutine having a PRV or NXT.
+In the first two cases a fold happens; in the first case the execution resumes at C<sub>n</sub> (The last subroutine), and in the second case at C<sub>1</sub> (the first subroutine).
+The third case is exactly the same as the other cases, but because the first and last subroutine are the same (As there is only a single subroutine), it just keeps looping back to itself. (Unless there is an EXT and the required conditions are met)
+
+
+</sub>
 
 ```Assembly
 C1: DEC, NOP, INC, NXT
@@ -94,7 +120,7 @@ C2: EXT, DEC
     title="A flowchart depicting the behaviour of a program with 2 subroutines and custom starting values"
   />
   <figcaption> <sub>
-    Notice how X (The first register on top) always starts off as the active register, and that each instruction (Including NOP) causes the the proceeding register to be the next active register (Therefore cycling through X, Y and Z every three instructions).  Another thing to take note of is that the middle NXT instruction in the second row of the image does not result in the interpreter moving on to the next subroutine (C2), and instead it stays on the current one (C1) and resumes execution from C1's first instruction again, this is because NXT only jumps to the next subroutine if the value of the active register equals 0, and in our case it's 1 (Not 0) during the first occurrence of NXT; this also holds true for EXT having to execute twice in C2.
+    Notice how X (The first register on top) always starts off as the active register, and that each instruction (Including NOP) causes the the proceeding register to be the next active register (Therefore cycling through X, Y and Z every three instructions).  Another thing to take note of is that the middle NXT instruction in the second row of the image does not result in the interpreter moving on to the next subroutine (C<sub>2</sub>), and instead it stays on the current one (C<sub>1</sub>) and resumes execution from C<sub>1</sub>'s first instruction again, this is because NXT only jumps to the next subroutine if the value of the active register equals 0, and in our case it's 1 (Not 0) during the first occurrence of NXT; this also holds true for EXT having to execute twice in C<sub>2</sub>.
   </sub> </figcaption>
 <br /> </figure>
 
@@ -102,19 +128,6 @@ C2: EXT, DEC
 ***
 
 ## Features
-
-
-| Opcode | Instruction Mnemonic | Description |
-| :---: | :---: | :--- |
-| 0000 | NOP | No operation; does nothing. (Could be used to safely select the proceeding register as the active register without any other side effects.) |
-| 0001 | EXT | Exit; if the value of the active register equals 0 then this exits the program entirely without loading any other subtask; otherwise nothing happens and this behaves the same as "NOP". |
-| 0010 | NXT | Next; if the value of the active register equals 0 then it ends the current C(n) subtask and switches to the first line of the next C(n+1) subtask; otherwise nothing happens and this behaves the same as "NOP". |
-| 0011 | PRV | Previous; if the value of the active register equals 0 this will end the current C(n) subtask and switch to the previous C(n-1) subtask; otherwise nothing happens and this behaves the same as "NOP". |
-| 0100 | INC | Increment; increaes the value of the active register by 1. |
-| 0101 | DEC | Decrement; decreases the value of the active register by 1. |
-| 0110+ | [Reserved] | Currently acts as a "NOP". |
-
-
 
 
 
