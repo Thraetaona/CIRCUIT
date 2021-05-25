@@ -47,7 +47,7 @@ As demonstrated in the Above image, the register's structure looks similar to a 
     title="The general structure of CIRCUIT"
   />
   <figcaption> <sub>
-    CIRCUIT has 3 general-purpose registers named X, Y and Z; it also uses the concept of "Active Register", which means that instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 1 or INC X for example), it instead uses an Active Register Counter ("ARC") that points to one of the 3 registers at any given time; each time an instruction is executed, ARC increases by 1 (from 0 up to a maximum of 2, if it's already 2 then it simply folds back to 0, therefore cycling through X, Y and Z every 3 instructions); to further clarify,
+    CIRCUIT has 3 general-purpose registers named X, Y and Z; it also uses the concept of "Active Register", which means that instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 1 or INC X for example), it instead uses an Active Register Counter ("ARC") that points to one of the 3 registers at any given time; each time an instruction is executed, ARC increases by 1 (from 1 up to a maximum of 3, if it's already 3 then it simply folds back to 1, therefore cycling through X, Y and Z every 3 instructions); to further clarify,
   </sub> </figcaption>
 <br /> </p>
 
