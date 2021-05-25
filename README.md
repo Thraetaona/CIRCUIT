@@ -55,7 +55,7 @@ As demonstrated in the Above image, the register's structure looks similar to a 
 
 ## Guide
 ### Syntax
-CIRCUIT's syntax is similar to Assembly save for the lack of operands and arguments, another key point of CIRCUIT is the important role of subroutines, subroutines are more of a necessity and much more verastile, and certain tasks impossible to accomplish without using them.
+CIRCUIT's syntax is similar to Assembly save for the lack of operands and arguments, another key difference of CIRCUIT is the important role of subroutines, subroutines are more of a necessity and much more verastile, and certain tasks impossible to accomplish without using them.
 The following program consisting of 3 subroutines that is used to find the maximum between 2 numbers covers the majority of what you need to know regarding the syntax to get started: \
 <sub>(This example is also available in the ./examples folder as "max.cit" with more details and consistency.)</sub>
 
@@ -76,14 +76,14 @@ NOP
   NOP  DEC    INC
 ```
 All 3 subroutines are valid, you could either write the instructions in a sequence separated by one or more whitespaces (" ") like in C<sub>1</sub>, below eachother like in C<sub>2</sub>, or as a combination of both as seen in C<sub>3</sub>. \
-The subroutines C<sub>n</sub> are defined just like labels in Assembly.  Also the order in which they are defined **does** matter, for example C<sub>2</sub> could **not** be defined before C<sub>1</sub>, likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.
+The subroutines C<sub>n</sub> are defined just like labels in Assembly.  Also the order in which they are defined **does** matter, for example C<sub>2</sub> could **not** be defined before C<sub>1</sub>, likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.  A subroutine can only be defined once. (i.e. you cannot have two C<sub>1</sub>'s.)
 
-You can have one or more (or up to a maximum of (TODO: max number)) subroutines.  C<sub>1</sub> is always the first subroutine to get executed. \
+You can have one or more (or up to a maximum of (TODO: max number)) subroutines.  C<sub>1</sub> is always the first subroutine to get executed.
 
-Switching between subroutines is possible by using the NXT and PRV instructions, these could appear in the middle of a subroutine and if the required conditions (Explained in the instructions map) are met then the switch to the next C<sub>(n+1)</sub> subroutine happens, even if the following instructions have not been executed yet. \
-There are 3 special cases that are discussed in the Instruction Set section.
+Switching between subroutines is possible by using the NXT and PRV instructions, these could appear in the middle of a subroutine and if the required conditions (Explained in the instructions map) are met then the switch to the next C<sub>(n+1)</sub> subroutine happens, even if the instructions following the said NXT/PRV have not been executed yet. \
+There are 3 special cases to this that are discussed in the Instruction Set section.
 
-A subroutine keeps looping back unless it has an EXT, NXT or
+When the interpreter reaches the end of a subroutine
 
 ### Instruction Set
 
