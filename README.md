@@ -40,16 +40,16 @@ But one of it's main traits that makes it unique and novel is that **all** of it
 CIRCUIT is an acronym for "**Circu**lar **I**terative **T**able". \
 As demonstrated in the Above image, the register's structure looks similar to a circular table with 3 seats around it, and each register is accessed once every 3 cycles, in other words we *iterate* through the registers on the *table* (Index) in a *circular* manner.
 
-<p align="center" text-align="center"> 
+<p align="center" text-align="center"> <br />
   <img 
     src="./overview.svg?raw=true&sanitize=true" 
     alt="Flowchart's image placeholder, If the .SVG file does not load properly then you could try manually opening the 'overview.svg' file in the 'docs' folder."
     title="The general structure of CIRCUIT"
   />
-  <sub>
+  <figcaption> <sub>
     CIRCUIT has 3 general-purpose registers named X, Y and Z; it also uses the concept of "Active Register", which means that instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 1 or INC X for example), it instead uses an Active Register Counter ("ARC") that points to one of the 3 registers at any given time; each time an instruction is executed, ARC increases by 1 (from 0 up to a maximum of 2, if it's already 2 then it simply folds back to 0, therefore cycling through X, Y and Z every 3 instructions); to further clarify,
-  </sub> 
-</p>
+  </sub> </figcaption>
+<br /> </p>
 
 ***
 
