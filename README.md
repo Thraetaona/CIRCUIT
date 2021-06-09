@@ -2,7 +2,11 @@
 
   <h1><code>CIRCUIT</code></h1>
 
-  <img src="" alt="Logo">
+  <img 
+    src="./overview.svg?raw=true&sanitize=true" 
+    alt="Flowchart's image placeholder, If the .SVG file does not load properly then you could try manually opening the 'overview.svg' file in the 'docs' folder."
+    title="The general structure of CIRCUIT"
+  />
 
   <p>
     <strong>Circular Iterative Table</strong>
@@ -35,7 +39,7 @@ But one of it's main traits that makes it unique and novel is that **all** of it
 
 ### Nomenclature
 CIRCUIT is an acronym for "**Circu**lar **I**terative **T**able".  Interestingly, it starts with 'C', that is the name of the programming language its written in as well.\
-As demonstrated in the below image, the registers are similarly structured to a circular table (Circular array or index) with 3 seats (Registers) around it, and each register is accessed once every 3 cycles, in other words we always *Iterate* through the registers on the *Table* in a *Circular* manner.
+As demonstrated in the above image, the registers are similarly structured to a circular table (Circular array or index) with 3 seats (Registers) around it, and each register is accessed once every 3 cycles, in other words we always *Iterate* through the registers on the *Table* in a *Circular* manner.
 
 ARC is also an acronym that stands for "**A**ctive **R**egister **C**ounter". \
 An arc usually refers to a portion of a circle, and as its once again obvious in the image, the arrow is pointing to one of the three sectors of the circle all the time.
