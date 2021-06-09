@@ -82,10 +82,10 @@ Switching between subroutines is possible by using the NXT, PRV control instruct
 EXT is the last control instruction that is nearly the same as as the above ones regarding it's placement and required conditions, except that it entirely exits the program without executing any other subroutine or instruction. \
 However, there are 3 special cases to NXT and PRV that are discussed in the Instruction Set section.
 
-When the interpreter reaches the end of a subroutine and there aren't 
+When the interpreter reaches the end of a subroutine and there aren't any control instructions and/or the required conditions arent met then it loops (Resumes execution) back to the beginning of the said subroutine.
 
 ### Instruction Set
-
+CIRCUIT has 6 instructions that are listed below:
 
 | Internal Opcode | Instruction Mnemonic | Description |
 | :---: | :---: | :--- |
@@ -98,10 +98,10 @@ When the interpreter reaches the end of a subroutine and there aren't
 | 0110+ | [Reserved] | These currently act the same "NOP". |
 <sub>
 *: There are 3 special cases: <br />
-1) The first subroutine (C<sub>1</sub>) having a PRV instruction.  <br />
+1) The first subroutine (C<sub>0</sub>) having a PRV instruction.  <br />
 2) The last subroutine (C<sub>n</sub>) having a NXT instruction.  <br />
 3) There is only a single subroutine and it has a PRV or NXT.  <br />
-In the first two cases a fold happens; in the first case the execution resumes at C<sub>n</sub> (The last subroutine), and in the second case at C<sub>1</sub> (the first subroutine).  <br />
+In the first two cases a fold happens; in the first case the execution resumes at C<sub>n</sub> (The last subroutine), and in the second case at C<sub>0</sub> (the first subroutine).  <br />
 The third case is exactly the same as the other cases, but because the first and last subroutine are the same (As there is only a single subroutine), it just keeps looping back to itself. (Unless there is an EXT and the required conditions are met)
 </sub>
 
