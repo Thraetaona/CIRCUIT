@@ -30,16 +30,15 @@
 
 ## Abstract
 ### Introduction
-CIRCUIT is an interpreted programming language with 3 general-purpose registers and 6 instructions.  \
-But one of it's main traits that makes it unique and novel is that **all** of it's instructions are nullary, meaning that none of them take any argument.  While the usability of such a design may sound very limited at first, it's actually possible to implement a lot of common CISC machine instructions (Such as greatest common divisor (GCD), square of a number, multiplication of 2 numbers, maximum and minimum, etc) despite the small number of it's default built-in registers and (nullary) instructions. \ 
-CIRCUIT also
-
-###
-
+CIRCUIT is an interpreted programming language with 3 general-purpose registers, 1 special ternary register called the Active Register Counter (or "ARC") and 6 instructions.  \
+But one of it's main traits that makes it unique and novel is that **all** of it's instructions are nullary, meaning that none of them take any argument.  While the usability of such a design may sound very limited at first, it's actually possible to implement a lot of common CISC machine instructions (Such as greatest common divisor (GCD), square of a number, multiplication of 2 numbers, maximum and minimum, etc) despite the small number of it's default built-in registers and (nullary) instructions.
 
 ### Nomenclature
-CIRCUIT is an acronym for "**Circu**lar **I**terative **T**able". \
-As demonstrated in the Above image, the register's structure looks similar to a circular table with 3 seats around it, and each register is accessed once every 3 cycles, in other words we *iterate* through the registers on the *table* (Index) in a *circular* manner.
+CIRCUIT is an acronym for "**Circu**lar **I**terative **T**able".  Interestingly, it starts with 'C', that is the name of the programming language its written in as well.\
+As demonstrated in the below image, the registers are similarly structured to a circular table (Circular array or index) with 3 seats (Registers) around it, and each register is accessed once every 3 cycles, in other words we always *Iterate* through the registers on the *Table* in a *Circular* manner.
+
+ARC is also an acronym that stands for "**A**ctive **R**egister **C**ounter". \
+An arc usually refers to a portion of a circle, and as its once again obvious in the image, the arrow is pointing to one of the three sectors of the circle all the time.
 
 <p align="center" text-align="center"> <br />
   <img 
