@@ -50,7 +50,8 @@ An arc usually refers to a portion of a circle, and as its once again obvious in
 
 ## Guide
 ### Overview
-CIRCUIT instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 0 or INC X for example), uses an Active Register Counter ("ARC") with 3 states (0, 1 or 2) that always points to X (0) at start; and each time an instruction (Including NOP) is executed, ARC increases by 1 (from 0 up to a maximum of 2, if it's already 2 then it simply folds back to 0, therefore cycling through X, Y and Z every 3 instructions)
+CIRCUIT instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 0 or INC X for example), uses a special ternary register known as the Active Register Counter ("ARC") with 3 states (0, 1 or 2) that always points to X (0) at start; and each time an instruction (Including NOP) is executed, ARC increases by 1. (from 0 up to a maximum of 2, if it's already 2 then it simply folds back to 0, therefore cycling through X, Y and Z every 3 instructions.) \
+To further simplify, if you think of CIRCUIT as a clock, ARC is the clock hand.
 
 ### Syntax
 CIRCUIT's syntax is similar to Assembly save for the lack of operands and arguments, additionally subroutines (Like Labels in Assembly) have an important role and are more of a necessity and much more verastile, with certain tasks being impossible to accomplish without using them.
