@@ -34,7 +34,7 @@
 
 ## Abstract
 ### Introduction
-CIRCUIT is an interpreted programming language with 3 general-purpose registers, 1 special ternary register called the Active Register Counter (or "ARC") and 6 instructions.  \
+CIRCUIT is an interpreted programming language with 3 general-purpose registers (Namely X, Y and Z), 1 special ternary register called the Active Register Counter (or "ARC") and 6 instructions.  \
 But one of it's main traits that makes it unique and novel is that **all** of it's instructions are nullary, meaning that none of them take any argument.  While the usability of such a design may sound very limited at first, it's actually possible to implement a lot of common CISC machine instructions (Such as greatest common divisor (GCD), square of a number, multiplication of 2 numbers, maximum and minimum, etc) despite the small number of it's default built-in registers and (nullary) instructions.
 
 ### Nomenclature
