@@ -39,7 +39,7 @@ But one of it's main traits that makes it unique and novel is that **all** of it
 
 ### Nomenclature
 **CIRCUIT** is an acronym for "**Circu**lar **I**terative **T**able".  Interestingly, it also starts with 'C', the name of the programming language its written in.\
-As demonstrated in the above image, the registers are structured similarly to a circular table (Circular array or index) with 3 seats (Registers) around it, and each register is accessed once every 3 cycles, in other words we always *Iterate* through the registers on the *Table* in a *Circular* manner.
+As demonstrated in the above image, the registers are structured similarly to a circular table (Circular array or index) with 3 seats (Registers) around it, and as the clockwise arrow shows, each register is accessed once every 3 cycles, in other words we always *Iterate* through the registers on the *Table* in a *Circular* manner.
 
 **ARC** is a similar acronym that stands for "**A**ctive **R**egister **C**ounter". \
 An arc usually refers to a portion of a circle, and as its once again obvious in the image, the arrow is pointing to one of the three *Sectors* of the circle all the time.
@@ -79,12 +79,12 @@ The subroutines C<sub>n</sub> are defined just like labels in Assembly and C.  A
 
 You can have one or more, up to a maximum of (TODO: max number) subroutines.  C<sub>0</sub> is always the first subroutine to get executed.
 
-There are 3 "**Control**" instructions (NXT, PRV and EXT) used to control the flow of the program. \
-Switching between subroutines is possible by using the NXT and PRV control instructions, these could appear anywhere in a subroutine and if the required conditions (Explained in the instructions map) are met then the switch to the next C<sub>(n+1)</sub> or previous C<sub>(n-1)</sub> subroutine happens, even if they appear in the middle or at the start of a subroutine and the instructions following them have not been executed yet. \
-EXT is the last control instruction that is nearly the same as as the above ones regarding it's placement and required conditions, except that it entirely exits (ends) the program without executing any other subroutine or instruction. \
+There are 3 "**Control**" instructions (NXT, PRV and EXT) that can be used to control the flow of the program. \
+Switching between subroutines is possible by using the NXT, PRV control instructions, these could appear anywhere in a subroutine and if the required conditions (Explained in the instructions map) are met then the switch to the next C<sub>(n+1)</sub> or previous C<sub>(n-1)</sub> subroutine happens, even if they appear in the middle or at the start of a subroutine and the instructions following them have not been executed yet. \
+EXT is the last control instruction that is nearly the same as as the above ones regarding it's placement and required conditions, except that it entirely exits the program without executing any other subroutine or instruction. \
 However, there are 3 special cases to NXT and PRV that are discussed in the Instruction Set section.
 
-When the interpreter reaches the end of a subroutine and there aren't any control instructions and/or the required conditions arent met, then it loops (Resumes execution) back to the beginning of the said subroutine.
+When the interpreter reaches the end of a subroutine and there aren't any control instructions and/or the required conditions arent met then it loops (Resumes execution) back to the beginning of the said subroutine.
 
 ### Instruction Set
 CIRCUIT has 6 instructions that are listed below:
