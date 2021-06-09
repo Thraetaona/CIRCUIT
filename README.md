@@ -65,8 +65,7 @@ C1:
   NOP
   DEC
   NOP
-  INC
-C2: NOP EXT
+  INC C2:NOP EXT
 
 NOP
   NOP  DEC    INC
@@ -74,7 +73,7 @@ NOP
 
 All 3 subroutines are valid, you could either write the instructions in a sequence separated by one or more whitespaces (" ") like in C<sub>0</sub>, below eachother like in C<sub>1</sub>, or as a combination of both as seen in C<sub>2</sub>.
 
-The subroutines C<sub>n</sub> are defined just like labels in Assembly.  Also the order in which they are defined **does** matter, for example C<sub>1</sub> could **not** be defined before C<sub>0</sub>, likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.  A subroutine can only be defined once. (i.e. you cannot have two C<sub>2</sub>'s.)
+The subroutines C<sub>n</sub> are defined just like labels in Assembly and C.  Also the order in which they are defined **does** matter, for example C<sub>1</sub> could **not** be defined before C<sub>0</sub>, likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.  A subroutine can only be defined once. (i.e. you cannot have two C<sub>2</sub>'s.)
 
 You can have one or more, up to a maximum of (TODO: max number) subroutines.  C<sub>0</sub> is always the first subroutine to get executed.
 
@@ -96,7 +95,7 @@ When the interpreter reaches the end of a subroutine and there aren't
 | 0011 | PRV | Previous; if the value of the active register equals 0, then this ends the current C<sub>n</sub> subtask and switches to the previous C<sub>(n-1)</sub> subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>[*]</sup> |
 | 0100 | INC | Increment; increaes the value of the active register by 1. |
 | 0101 | DEC | Decrement; decreases the value of the active register by 1. |
-| 0110+ | [Reserved] | Currently acts as a "NOP". |
+| 0110+ | [Reserved] | These currently act the same "NOP". |
 <sub>
 *: There are 3 special cases: <br />
 1) The first subroutine (C<sub>1</sub>) having a PRV instruction.  <br />
@@ -104,8 +103,6 @@ When the interpreter reaches the end of a subroutine and there aren't
 3) There is only a single subroutine and it has a PRV or NXT.  <br />
 In the first two cases a fold happens; in the first case the execution resumes at C<sub>n</sub> (The last subroutine), and in the second case at C<sub>1</sub> (the first subroutine).  <br />
 The third case is exactly the same as the other cases, but because the first and last subroutine are the same (As there is only a single subroutine), it just keeps looping back to itself. (Unless there is an EXT and the required conditions are met)
-
-
 </sub>
 
 ```Assembly
