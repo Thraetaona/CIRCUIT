@@ -4,8 +4,8 @@
 
   <img 
     src="./overview.svg?raw=true&sanitize=true" 
-    alt="Logo"
-    title="The logo of CIRCUIT"
+    alt="Flowchart's image placeholder, If the .SVG file does not load properly then you could try manually opening the 'overview.svg' file in the 'docs' folder."
+    title="Overview of the general structure of CIRCUIT"
   />
 
   <p>
