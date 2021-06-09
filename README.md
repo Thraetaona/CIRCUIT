@@ -44,50 +44,46 @@ As demonstrated in the above image, the registers are similarly structured to a 
 ARC is a similar acronym that stands for "**A**ctive **R**egister **C**ounter". \
 An arc usually refers to a portion of a circle, and as its once again obvious in the image, the arrow is pointing to one of the three *sectors* of the circle all the time.
 
-<p align="center" text-align="center"> <br />
-  <img 
-    src="./overview.svg?raw=true&sanitize=true" 
-    alt="Flowchart's image placeholder, If the .SVG file does not load properly then you could try manually opening the 'overview.svg' file in the 'docs' folder."
-    title="The general structure of CIRCUIT"
-  />
-  <figcaption> <sub>
-    CIRCUIT has 3 general-purpose registers named X, Y and Z; it also uses the concept of "Active Register", which means that instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 1 or INC X for example), it instead uses an Active Register Counter ("ARC") with 3 states (1, 2 or 3) that always points to X at start and each time an instruction is executed, ARC increases by 1 (from 1 up to a maximum of 3, if it's already 3 then it simply folds back to 1, therefore cycling through X, Y and Z every 3 instructions).
-  </sub> </figcaption>
-<br /> </p>
-
 ***
 
 ## Guide
+### Overview
+CIRCUIT instead of having multiple instructions like X_INC, Y_INC and Z_INC to interact with different registers, or taking the register's index/name as an operand for said instructions (INC 0 or INC X for example), uses an Active Register Counter ("ARC") with 3 states (0, 1 or 2) that always points to X at start and each time an instruction (Including NOP) is executed, ARC increases by 1 (from 0 up to a maximum of 2, if it's already 2 then it simply folds back to 0, therefore cycling through X, Y and Z every 3 instructions)
+
 ### Syntax
-CIRCUIT's syntax is similar to Assembly save for the lack of operands and arguments, another key difference of CIRCUIT is the important role of subroutines, subroutines are more of a necessity and much more verastile, and certain tasks impossible to accomplish without using them.
-The following program consisting of 3 subroutines that is used to find the maximum between 2 numbers covers the majority of what you need to know regarding the syntax to get started: \
+CIRCUIT's syntax is similar to Assembly save for the lack of operands and arguments, additionally subroutines (Like Labels in Assembly) have an important role and are more of a necessity and much more verastile, with certain tasks being impossible to accomplish without using them.
+The following program consisting of 3 subroutines that is used to find the maximum between 2 numbers and store it in the third register covers the majority of what you need to know regarding the syntax to get started: \
 <sub>(This example is also available in the ./examples folder as "max.cit" with more details and consistency.)</sub>
 
 ```Assembly
 ; Lines starting with semicolons (";") are comment lines ignored by the interpreter.
-C1: NXT NXT NOP DEC DEC INC ; Inline comments are also allowed.
+C0: NXT NXT NOP DEC DEC INC ; Inline comments are also allowed.
 
-C2: 
+C1: 
   NXT
   NOP
   NOP
   DEC
   NOP
   INC
-C3: NOP EXT
+C2: NOP EXT
 
 NOP
   NOP  DEC    INC
 ```
-All 3 subroutines are valid, you could either write the instructions in a sequence separated by one or more whitespaces (" ") like in C<sub>1</sub>, below eachother like in C<sub>2</sub>, or as a combination of both as seen in C<sub>3</sub>. \
-The subroutines C<sub>n</sub> are defined just like labels in Assembly.  Also the order in which they are defined **does** matter, for example C<sub>2</sub> could **not** be defined before C<sub>1</sub>, likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.  A subroutine can only be defined once. (i.e. you cannot have two C<sub>1</sub>'s.)
 
-You can have one or more (or up to a maximum of (TODO: max number)) subroutines.  C<sub>1</sub> is always the first subroutine to get executed.
+All 3 subroutines are valid, you could either write the instructions in a sequence separated by one or more whitespaces (" ") like in C<sub>0</sub>, below eachother like in C<sub>1</sub>, or as a combination of both as seen in C<sub>2</sub>.
 
-Switching between subroutines is possible by using the NXT and PRV instructions, these could appear in the middle of a subroutine and if the required conditions (Explained in the instructions map) are met then the switch to the next C<sub>(n+1)</sub> subroutine happens, even if the instructions following the said NXT/PRV have not been executed yet. \
-There are 3 special cases to this that are discussed in the Instruction Set section.
+The subroutines C<sub>n</sub> are defined just like labels in Assembly.  Also the order in which they are defined **does** matter, for example C<sub>1</sub> could **not** be defined before C<sub>0</sub>, likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.  A subroutine can only be defined once. (i.e. you cannot have two C<sub>2</sub>'s.)
 
-When the interpreter reaches the end of a subroutine
+You can have one or more, up to a maximum of (TODO: max number) subroutines.  C<sub>0</sub> is always the first subroutine to get executed.
+
+There are 3 "**Control**" instructions (NXT, PRV and EXT) that can be used to control the flow of the program. \
+Switching between subroutines is possible by using the NXT, PRV control instructions, these could appear anywhere in a subroutine and if the required conditions (Explained in the instructions map) are met then the switch to the next C<sub>(n+1)</sub> or previous C<sub>(n-1)</sub> subroutine happens, even if they appear in the middle or at the start of a subroutine and the instructions following them have not been executed yet. \
+EXT is the last control instruction that is nearly the same as as the above ones regarding it's placement and required conditions, except that it entirely exits the program without executing any other subroutine or instruction. \
+However, there are 3 special cases to NXT and PRV that are discussed in the Instruction Set section.
+
+When the interpreter reaches the end of a subroutine and there aren't 
 
 ### Instruction Set
 
