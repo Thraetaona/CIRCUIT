@@ -97,7 +97,7 @@ When the interpreter reaches the end of a subroutine
 | 0000 | NOP | No operation; does nothing. (Could be used to safely select the proceeding register as the active register without any other side effects.) |
 | 0001 | EXT | Exit; if the value of the active register equals 0, then this exits the program entirely without loading any other subtask; otherwise nothing happens and this behaves the same as "NOP". |
 | 0010 | NXT | Next; if the value of the active register equals 0, then this ends the current C<sub>n</sub> subtask and switches to the first line of the next C<sub>(n+1)</sub> subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>[*]</sup> |
-| 0011 | PRV | Previous; if the value of the active register equals 0, then this ends the current C<sub>n</sub> subtask and switch to the previous C<sub>(n-1)</sub> subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>[*]</sup> |
+| 0011 | PRV | Previous; if the value of the active register equals 0, then this ends the current C<sub>n</sub> subtask and switches to the previous C<sub>(n-1)</sub> subtask; otherwise nothing happens and this behaves the same as "NOP".<sup>[*]</sup> |
 | 0100 | INC | Increment; increaes the value of the active register by 1. |
 | 0101 | DEC | Decrement; decreases the value of the active register by 1. |
 | 0110+ | [Reserved] | Currently acts as a "NOP". |
