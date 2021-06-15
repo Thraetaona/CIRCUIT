@@ -60,8 +60,6 @@ The following program consisting of 3 subroutines that is used to find the maxim
 
 ```Assembly
 ; Lines starting with semicolons (";") are comment lines ignored by the interpreter.
-C0: NXT NXT NOP DEC DEC INC ; Inline comments are also allowed.
-
 C1: 
   NXT
   NOP
@@ -72,11 +70,12 @@ C1:
 
 NOP
   NOP  DEC    INC
+C0: NXT NXT NOP DEC DEC INC ; Inline comments are also allowed.
 ```
 
 All 3 subroutines are valid, you could either write the instructions in a sequence separated by one or more whitespaces (" ") like in C<sub>0</sub>, below eachother like in C<sub>1</sub>, or as a combination of both as seen in C<sub>2</sub>.
 
-The subroutines C<sub>n</sub> are defined just like labels in Assembly and C.  Also the order in which they are defined **does** matter, for example C<sub>1</sub> could **not** be defined before C<sub>0</sub>, likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.  A subroutine can only be defined once. (i.e. you cannot have two C<sub>2</sub>'s.)
+The subroutines C<sub>n</sub> are defined just like labels in Assembly and C.  Also the order in which they are defined does **not** matter, for example C<sub>1</sub> could be defined before C<sub>0</sub>, (TODO) likewise you could **not** define C<sub>1</sub> and jump to C<sub>3</sub> and C<sub>4</sub> while skipping C<sub>2</sub>.  A subroutine can only be defined once. (i.e. you cannot have two C<sub>2</sub>'s.)
 
 You can have one or more, up to a maximum of (TODO: max number) subroutines.  C<sub>0</sub> is always the first subroutine to get executed.
 
