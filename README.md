@@ -55,7 +55,7 @@ To further simplify, if you think of CIRCUIT as a clock, ARC is the clock hand.
 
 ### Syntax
 CIRCUIT's syntax is similar to Assembly save for the lack of operands and arguments, additionally subroutines (Like Labels in Assembly) have an important role and are more of a necessity and much more verastile, with certain tasks being impossible to accomplish without using them.
-The following program consisting of 3 subroutines that is used to find the maximum between 2 numbers and store it in the third register covers the majority of what you need to know regarding the syntax to get started: \
+The following program consisting of 3 subroutines that is used to find the maximum between 2 numbers and store it in the third register, covers the majority of what you need to know regarding the syntax to get started: \
 <sub>(This example is also available in the ./examples folder as "max.cit" with more details and consistency.)</sub>
 
 ```Assembly
